@@ -1,0 +1,56 @@
+<!-- TOTAL AGENCIES COUNT {{ agencyList.length }}
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Agency Name</th>
+      <th>SubAgencies</th>
+      <th>CFR References count</th>
+      <th>Title - Chapter</th>
+      <th>Get Word Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let agency of agencyList; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ agency.name }}</td>
+      <td>
+        <ul *ngIf="agency.children.length > 0">
+          <li *ngFor="let item of agency.children; let j = index">
+            {{ j + 1 }} - {{ item?.name }}
+          </li>
+        </ul>
+      </td>
+      <td>{{ agency.cfr_references.length }}</td>
+
+      <td>
+        <ul *ngIf="agency.cfr_references.length > 0">
+          <li *ngFor="let item of agency.cfr_references">
+            {{ item?.title }} - {{item.chapter}}
+            
+          </li>
+        </ul>
+      </td>
+      <td><button (click)="fetchTitleData('2025-03-27', 7)">
+        WORD COUNT FOR TITLE {{ wordCount }}
+      </button></td>
+
+    </tr>
+  </tbody>
+</table> -->
+<mat-toolbar color="primary">
+  <!-- Menu Navigation -->
+  <span class="spacer"></span>
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+
+  <!-- Define the menu items -->
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/']">Dashboard</button>
+    <button mat-menu-item [routerLink]="'/wordCount'">Word Count</button>
+    <button mat-menu-item [routerLink]="'/corrections'">Corrections</button>
+  </mat-menu>
+</mat-toolbar>
+
+<!-- Content will be rendered here -->
+<router-outlet></router-outlet>
