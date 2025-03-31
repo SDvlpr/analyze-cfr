@@ -16,7 +16,10 @@ export class GetAgenciesService {
     public getAgencies(): Observable<IAgency[]>{
         return this.http.get<IAgency[]>(`https://www.ecfr.gov/api/admin/v1/agencies.json`);
     }
-    public getCorrections(title: number): Observable<IEcfrcorrections[]>{
+    public getCorrections(): Observable<IEcfrcorrections[]>{
+      return this.http.get<IEcfrcorrections[]>(`https://www.ecfr.gov/api/admin/v1/corrections.json`);
+  }
+    public getCorrectionsByTitle(title: number): Observable<IEcfrcorrections[]>{
         return this.http.get<IEcfrcorrections[]>(`https://www.ecfr.gov/api/admin/v1/corrections/title/${title}.json`);
     }
 

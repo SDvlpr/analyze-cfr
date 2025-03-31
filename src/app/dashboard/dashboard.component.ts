@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   wordCount?: number;
   corrections?: number;
   errorMessage?: string;
+  totalCorrections?: number;
 
   constructor(private service: GetAgenciesService) { }
 
@@ -28,10 +29,13 @@ export class DashboardComponent implements OnInit {
     this.service.getAgencies().subscribe((response: any) => {
       this.agencyList = response.agencies;
     });
+    this.service.getCorrections().subscribe((response: any) => {
+      this.totalCorrections = response.ecfr_corrections.length;
+    });
   }
 
   getCorrectionByTitle(title: number) {
-    this.service.getCorrections(title).subscribe((response: any) => {
+    this.service.getCorrectionsByTitle(title).subscribe((response: any) => {
       this.corrections = response.ecfr_corrections.length;
     });
   }

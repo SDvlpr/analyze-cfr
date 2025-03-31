@@ -1,7 +1,13 @@
 <!-- Content will be rendered here -->
 <router-outlet></router-outlet>
-NUMBER OF AGENCIES: {{ agencyList.length }}
-
+<div class="row p-5">
+  <div class="col-md-6">
+    NUMBER OF AGENCIES: {{ agencyList.length }}
+  </div>
+  <div class="col-md-6">
+    Total corrections: {{totalCorrections}}
+  </div>
+</div>
 <table class="table table-bordered">
   <thead>
     <tr>
