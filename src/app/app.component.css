@@ -1,0 +1,25 @@
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .tabs a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  .tabs a.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .tabs a:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+  

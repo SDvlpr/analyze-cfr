@@ -7,10 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { response } from 'express';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule,RouterModule , MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule], // Import required Angular Material modules here
+  imports: [CommonModule, RouterModule, MatIconModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule], // Import required Angular Material modules here
 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
 export class DashboardComponent implements OnInit {
   agencyList: IAgency[] = [];  // Array to hold agency data
   wordCount?: number;
+  corrections?: number;
   errorMessage?: string;
 
   constructor(private service: GetAgenciesService) { }
@@ -30,13 +32,11 @@ export class DashboardComponent implements OnInit {
 
   getCorrectionByTitle(title: number) {
     this.service.getCorrections(title).subscribe((response: any) => {
-      console.log('corrections', response.ecfr_corrections.length)
+      this.corrections = response.ecfr_corrections.length;
     });
   }
 
   public fetchTitleData(date: string, title?: number): void {
-    // let date = '2025-03-27';
-    // let title = 1;
     if (date && title) {
       this.service.fetchTitleXML(date, title).subscribe({
         next: count => {
@@ -52,4 +52,5 @@ export class DashboardComponent implements OnInit {
       this.errorMessage = 'Please provide both date and title.';
     }
   }
+
 }

@@ -17,9 +17,7 @@ export class GetAgenciesService {
         return this.http.get<IAgency[]>(`https://www.ecfr.gov/api/admin/v1/agencies.json`);
     }
     public getCorrections(title: number): Observable<IEcfrcorrections[]>{
-        const params = new HttpParams().set('title', title);
-
-        return this.http.get<IEcfrcorrections[]>(`https://www.ecfr.gov/api/admin/v1/corrections.json`, {params});
+        return this.http.get<IEcfrcorrections[]>(`https://www.ecfr.gov/api/admin/v1/corrections/title/${title}.json`);
     }
 
     public fetchTitleXML(date: string, title: number): Observable<number> {

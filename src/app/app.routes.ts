@@ -5,6 +5,6 @@ import { CorrectionsComponent } from './corrections/corrections.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent, pathMatch: 'full' },
-    { path: 'wordCount', component: WordcountComponent },
-    { path: 'corrections', component: CorrectionsComponent },
+    // { path: 'wordCount', component: WordcountComponent },
+    // { path: 'corrections', component: CorrectionsComponent },
 ];
