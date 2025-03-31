@@ -10,9 +10,6 @@ NUMBER OF AGENCIES: {{ agencyList.length }}
       <th>Sub-agencies</th>
       <th>CFR References count</th>
       <th>Title - Chapter</th>
-      <th>Word Count</th>
-      <th>Corrections</th>
-
     </tr>
   </thead>
   <tbody>
@@ -32,18 +29,15 @@ NUMBER OF AGENCIES: {{ agencyList.length }}
         <ul *ngIf="agency.cfr_references.length > 0">
           <li *ngFor="let item of agency.cfr_references">
             {{ item?.title }} - {{ item.chapter }}
+            <br>
+            <button (click)="fetchTitleData('2025-03-27', item?.title)">
+              WORD COUNT FOR TITLE {{ item?.title }} {{ wordCount }}
+            </button>
+            <button (click)="getCorrectionByTitle(item.title)">
+              Corrections FOR TITLE {{ item?.title }} {{ corrections }}
+            </button>
           </li>
         </ul>
-      </td>
-      <td>
-        <button (click)="fetchTitleData('2025-03-27', 1)">
-          WORD COUNT FOR TITLE {{ wordCount }}
-        </button>
-      </td>
-      <td>
-        <button (click)="getCorrectionByTitle(7)">
-          Corrections FOR TITLE {{ corrections }}
-        </button>
       </td>
     </tr>
   </tbody>
